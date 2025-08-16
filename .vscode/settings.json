@@ -3,5 +3,9 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "color-highlight.markerType": "background",
+  "color-highlight.matchWords": true,
+  "color-highlight.matchRgbWithNoFunction": true,
+  "color-highlight.matchHslWithNoFunction": true
 }
