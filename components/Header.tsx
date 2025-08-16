@@ -35,22 +35,17 @@ const Header = () => {
                     </Text>
                 </View>
             </View>
-
-            {totoalCount > 0 && (
-                <View style={headerStyle.progressContainer}>
-                    <View style={headerStyle.progressBarContainer}>
-                        <View style={headerStyle.progressBar}>
-                            <LinearGradient
-                                colors={colors.gradients.success}
-                                style={[headerStyle.progressFill, { width: `${progressPercentage}%` }]}
-                            />
-                        </View>
-                        <Text style={headerStyle.progressText}>{Math.round(progressPercentage)}%</Text>
+            <View style={headerStyle.progressContainer}>
+                <View style={headerStyle.progressBarContainer}>
+                    <View style={headerStyle.progressBar}>
+                        <LinearGradient
+                            colors={colors.gradients.success}
+                            style={[headerStyle.progressFill, { width: `${progressPercentage}%` }]}
+                        />
                     </View>
+                    <Text style={headerStyle.progressText}>{Math.round(progressPercentage)}%</Text>
                 </View>
-            )}
-
-
+            </View>
         </View>
     )
 }
