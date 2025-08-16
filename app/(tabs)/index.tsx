@@ -1,7 +1,11 @@
+import { createHomeStyles } from "@/assets/styles/home.styles";
+import Header from "@/components/Header";
 import { api } from "@/convex/_generated/api";
-import useColorScheme, { ColorScheme } from "@/hooks/useColorScheme";
+import useColorScheme from "@/hooks/useColorScheme";
 import { useMutation, useQuery } from "convex/react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const {toggleDarkMode , colors} = useColorScheme()
@@ -10,37 +14,26 @@ export default function Index() {
   const addTodo = useMutation(api.todos.addTodo);
   const clearAllTodo = useMutation(api.todos.clearAllTodos)
 
-    const styles = createStyle(colors)
+    const styles = createHomeStyles(colors)
 
   return (
-    <View
-      style={styles.container}
+    <LinearGradient colors={colors.gradients.background} style={styles.container}>
+      <StatusBar barStyle={colors.statusBarStyle}/>
+    <SafeAreaView
+      style={styles.safeArea}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-      <TouchableOpacity onPress={toggleDarkMode}>
-        <Text>Toggle Mode</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={()=>addTodo({text:"Adding first Todo "})}>
-        <Text>Add First Todo</Text>
-      </TouchableOpacity>
 
 
-      <TouchableOpacity onPress={()=>clearAllTodo()}>
-        <Text>Clear All</Text>
+    <Header/>
+
+
+
+      <TouchableOpacity onPress={()=>toggleDarkMode()}> 
+        <Text>Toogle Mode</Text>
       </TouchableOpacity>
-    </View>
+     <Text>Hi </Text>
+    </SafeAreaView>
+    </LinearGradient>
   );
 }
 
-const createStyle = (colors:ColorScheme)=>{
-  const styles = StyleSheet.create({
-    container:{
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor:colors.bg
-    }
-  })
-  return styles
-}
