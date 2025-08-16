@@ -1,19 +1,20 @@
 import { api } from "@/convex/_generated/api";
-import useColorScheme from "@/hooks/useColorScheme";
+import useColorScheme, { ColorScheme } from "@/hooks/useColorScheme";
 import { useMutation, useQuery } from "convex/react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
-  const {toggleDarkMode} = useColorScheme()
+  const {toggleDarkMode , colors} = useColorScheme()
   const getTodo = useQuery(api.todos.getTodos);
     console.log(getTodo);
   const addTodo = useMutation(api.todos.addTodo);
   const clearAllTodo = useMutation(api.todos.clearAllTodos)
 
-    
+    const styles = createStyle(colors)
+
   return (
     <View
-      style={style.container}
+      style={styles.container}
     >
       <Text>Edit app/index.tsx to edit this screen.</Text>
       <TouchableOpacity onPress={toggleDarkMode}>
@@ -31,11 +32,15 @@ export default function Index() {
     </View>
   );
 }
-const style = StyleSheet.create({
-  container:{
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    
-  }
-})
+
+const createStyle = (colors:ColorScheme)=>{
+  const styles = StyleSheet.create({
+    container:{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor:colors.bg
+    }
+  })
+  return styles
+}
