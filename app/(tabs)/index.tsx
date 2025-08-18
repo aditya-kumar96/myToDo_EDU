@@ -141,8 +141,6 @@ export default function Index() {
                             <Text style={styles.editButtonText}> Save</Text>
                         </LinearGradient>
                     </TouchableOpacity>
-
-
                     <TouchableOpacity onPress={handleCancelTask} activeOpacity={0.8}>
                         <LinearGradient colors={colors.gradients.muted}
                           style={styles.editButton}
